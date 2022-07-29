@@ -6,9 +6,12 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server/server.js",
+    "bot": "node bot/bot.js",
     "build": "NODE_ENV=production webpack",
     "watch": "webpack --watch",
-    "dev": "NODE_ENV=development webpack serve --open"
+    "dev": "NODE_ENV=development webpack serve --open",
+    "devbot": "npx nodemon node bot/bot.js",
+    "devserver": "npx nodemon node server/server.js"
   },
   "nodemonConfig": {
     "ignore": [
