@@ -1,4 +1,4 @@
-const Example = require('../models/exampleModel');
+const Example = require('../models/ExampleModel');
 const { createErr } = require('../utils/utils');
 
 const exampleController = {};
