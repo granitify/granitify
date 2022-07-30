@@ -22,6 +22,7 @@ In another terminal, start the webpack-dev-server for the front end
 `npm run dev`
 
 
+
 ```
 messageObject { ID: id#, INT
                  Text: '', STRING
@@ -35,3 +36,4 @@ messageObject { ID: id#, INT
                  Resource: {URL: [''] ,  IMAGE: ''   CODE: ''}
  }
  ```
+
