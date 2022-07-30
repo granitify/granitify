@@ -4,6 +4,7 @@ const { Client, GatewayIntentBits } = require('discord.js');
 const { token } = require('./secrets.json');
 const client = new Client ({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.DirectMessages]});
 // client.commands = new Collection();
+const archiver = require('./archiver');
 
 client.once('ready', () => {
     console.log('Bot starting...');
@@ -34,7 +35,7 @@ client.on('messageCreate', message => {
 	attachment = attachments.get(id);
 	attachmentArray.push(attachment.url)
 	// console.log(`Attachment ${id}, url: ${attachment.url}`);---Testing
-		}
+}
 
 	let urlRegex = /(https?:\/\/[^\s]+)/g;
 	const urls = new Array;
@@ -47,22 +48,23 @@ client.on('messageCreate', message => {
 
 	//data to parse for sending to backend
 	const data = {
-		"ID":id, 
-		"Text":content,
-		"User": author.username,
-		"Date": createdTimestamp,
-		"Attachments": null,
-		"Score": 0,
-		"Embed": null,
-		"Subject": null,
-		"Category": null,
-		"Resource": {
-		  "URL": urls,
-		  "IMAGE": attachmentArray,
-		  "CODE": []
-		}
+		"id":id, 
+		"user": author.username,
+		"date": createdTimestamp,
+		"text":content,
+		"embed": null,
+		"attachments": null,
+		"score": 0,
+		"resource": {
+			"linkUrls": urls,
+			"imageUrls": attachmentArray,
+			"codeSnippets": snippets,
+		},
+		"subject": null,
+		"category": null,
 	}
-	console.log(data)
+	archiver.send(message);
+	console.log(data);
 })
 	//Testing--------
 		// console.log(attachments);
@@ -71,6 +73,9 @@ client.on('messageCreate', message => {
 		// console.log (content, id)
 		// console.log(author.username);
       
+
+        
+
 
 client.login(token)
 
