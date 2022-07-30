@@ -31,7 +31,11 @@
   },
   "homepage": "https://github.com/seadubs/nerm-template#readme",
   "dependencies": {
+    "@discordjs/rest": "^1.0.1",
+    "discord": "^0.8.2",
+    "discord.js": "^14.1.1",
     "express": "^4.18.1",
+    "js": "^0.1.0",
     "mongoose": "^6.4.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
