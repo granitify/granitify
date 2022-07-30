@@ -1,18 +1,23 @@
 [{
-  "ID": "1234567890",
-  "Text": "This website https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map is great, check out this `const map1 = array1.map(x => x * 2);` too",
-  "User": "aspiringCODER98",
-  "Date": 1659199933651,
-  "Attachments": null,
-  "Score": 7,
-  "Embed": null,
-  "Subject": null,
-  "Category": null,
-  "Resource": {
-    "URL": [
+  "id": 123456789,
+  "user": "aspiringCODER98",
+  "date": 1659199933651,
+  "text": "This website https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map is great, check out this `const map1 = array1.map(x => x * 2);` too",
+  "embeds": null,
+  "attachments": null,
+  "score": 7,
+  "resources": {
+    "linkUrls": [
       "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map"
     ],
-    "IMAGE": ["https://cdn.discordapp.com/attachments/1002711589868290208/1002985627819716698/unknown.png", "https://media.discordapp.net/attachments/1002711589868290208/1002747133235048459/Frontend_Model.png?width=951&height=656"],
-    "CODE": ["const map1 = array1.map(x => x * 2);"]
-  }
+    "imageUrls": [
+      "https://cdn.discordapp.com/attachments/1002711589868290208/1002985627819716698/unknown.png",
+      "https://media.discordapp.net/attachments/1002711589868290208/1002747133235048459/Frontend_Model.png?width=951&height=656"
+    ],
+    "codeSnippets": [
+      "const map1 = array1.map(x => x * 2);"
+    ]
+  },
+  "subject": null,
+  "category": null
 }]

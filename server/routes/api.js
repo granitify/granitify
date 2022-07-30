@@ -1,7 +1,9 @@
 const Router = require('express');
 const example = require('./example');
-
+const resource = require('./resource');
 const router = Router();
+
+
 
 router.use((req, res, next) => {
   console.log(`server/routes/api.js: received request ${req.method} ${req.url}`);
@@ -13,6 +15,7 @@ router.get('/', (req, res) => {
   res.status(200).json({message: 'api router online'});
 });
 
+router.use('/resource', resource)
 router.use('/example', example);
 
 router.use((req, res) => {
