@@ -79,11 +79,11 @@ See `./sample-objects.json` for an importable array of sample objects based on t
 		
 		
 			resourcesToDisplay:
-				A list of <ResourceDisplays>, each propdrilled on of the resources
+				A list of <ResourceDisplay > components, eachbeing propdrilled one of the resources
 					left after filtering and searching the resourceList
 			Return:
 	
-				resourcesToDisplay: [<ResourceDisplay resource>]
+				resourcesToDisplay: [<ResourceDisplay resource>] props-> One resource from ResourceList per ResourceDisplay
 
 
 ```
