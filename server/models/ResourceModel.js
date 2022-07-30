@@ -18,17 +18,16 @@ mongoose.connect(MONGO_URI, {
 const Schema = mongoose.Schema;
 
 const resourceSchema = new mongoose.Schema({
-  id: { type: Number, required: true }
-  text: { type: String },
+  id: { type: Number, required: true },
   user: { type: String, required: true },
   date: { type: Date, required: true},
+  text: { type: String },
+  embeds: { type: Object },
   attachments: { type: undefined },
   score: { type: Number },
-  embed: { type: Object },
+  resources: { type: Object, { linkUrls: Object, imageUrls: Object, codeSnippets: Object } },
   subject: { type: String },
-  category: { type: String },
-  resource: { type: Object, { url: Object, image: Object, code: Object } },
-
+  category: { type: String }
 });
 
 const Resource = mongoose.model('Resource', resourceSchema);

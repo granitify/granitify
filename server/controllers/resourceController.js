@@ -23,8 +23,8 @@ resourceController.getAllResources = async (req, res, next) => {
 
 // Example Mongoose create
 resourceController.createResource = async (req, res, next) => {
-  const required = ['id', 'user'];
-  const { id, user } = req.body;
+  const required = ['id', 'user', 'date'];
+  const { id, user, date, text, embeds, attachments, score, resources, subject, category } = req.body;
 
   if (required.some((key) => req.body[key] === undefined)) {
     return next(
@@ -39,6 +39,7 @@ resourceController.createResource = async (req, res, next) => {
   if (
     typeof id !== 'number' ||
     typeof user !== 'string' ||
+    typeof date !== 'number'
   ) {
     return next(
       createErr({
@@ -50,8 +51,8 @@ resourceController.createResource = async (req, res, next) => {
   }
 
   try {
-    const dbRes = await Resource.create({ id, user });
-    res.locals.newExample = dbRes;
+    const dbRes = await Resource.create({ id, user, date, text, embeds, attachments, score, resources, subject, category });
+    res.locals.newResource = dbRes;
   } catch (err) {
     return next(
       createErr({
