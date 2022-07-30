@@ -6,7 +6,7 @@ const MainContainer = () => {
   return (
     <div>
       <SearchMenu />
-      <ResourceDisplay resource={{ ID: 1234, User: 'jackie' }} />
+      <ResourceDisplay resource={{ id: 1234, user: 'Jackie' }} />
     </div>
   );
 }

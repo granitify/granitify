@@ -16,17 +16,17 @@ const bull = (
 );
 
 export default function ResourceDisplay(props) {
-  const { ID, User, Resource } = props.resource
+  const { id, user, resource } = props.resource
 
 
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
         <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {ID}
+          {id}
         </Typography>
         <Typography variant="h5" component="div">
-          {`Submitted by: ${User}`}
+          {`Submitted by: ${user}`}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
           adjective
