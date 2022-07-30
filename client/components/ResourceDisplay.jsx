@@ -5,6 +5,8 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import ImageList from '@mui/material/ImageList';
+import ImageListItem from '@mui/material/ImageListItem';
 
 const bull = (
   <Box
@@ -16,8 +18,8 @@ const bull = (
 );
 
 export default function ResourceDisplay(props) {
-  const { id, user, resource } = props.resource
-
+  const { id, user, resources } = props.resource;
+  
 
   return (
     <Card sx={{ minWidth: 275 }}>
@@ -26,16 +28,29 @@ export default function ResourceDisplay(props) {
           {id}
         </Typography>
         <Typography variant="h5" component="div">
-          {`Submitted by: ${user}`}
+          {`Sent by: ${user}`}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          adjective
+          <a href={resources.linkUrls}>{resources.linkUrls}</a>
         </Typography>
-        <Typography variant="body2">
-          well meaning and kindly.
-          <br />
-          {'"a benevolent smile"'}
+
+        <ImageList sx={{ width: 500, height: 250 }} cols={3} rowHeight={164}>
+        {resources.imageUrls.map((item) => (
+          <ImageListItem key={item}>
+            <img
+              src={item}
+              srcSet={item}
+              alt={item}
+              loading="lazy"
+            />
+          </ImageListItem>
+        ))}
+      </ImageList>
+
+      <Typography variant="body2">
+          {resources.codeSnippets}
         </Typography>
+
       </CardContent>
       <CardActions>
         <Button size="small">Learn More</Button>
