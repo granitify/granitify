@@ -4,6 +4,7 @@ const { Client, GatewayIntentBits } = require('discord.js');
 const { token } = require('./secrets.json');
 const client = new Client ({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.DirectMessages]});
 // client.commands = new Collection();
+const archiver = require('./archiver');
 
 client.once('ready', () => {
     console.log('Bot starting...');
@@ -25,7 +26,8 @@ client.on('interactionCreate', async interaction => {
 
 client.on('messageCreate', message => {
 		console.log("message received")
-        console.log(message)
+        console.log(message);
+        archiver.send(message);
         }) 
 
 client.login(token)
