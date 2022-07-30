@@ -44,3 +44,46 @@ messageObject {
 }
  ```
 See `./sample-objects.json` for an importable array of sample objects based on the spec
+
+
+
+## React Structure
+
+```
+<App // Does nothing
+  < MainContainer // Contains filter/search state and functions, calls sub-components/containers
+	State:
+		subjects: [str...]
+		categories: [str...]
+		filterSubjects: [ str...]
+		filterCategories: [ str...]
+		currentSearch: str
+	Functions
+		setSubjectFilters: func
+		setCategoryFilters: func
+		setSearch: func
+		getCategories: func
+		getSubjects: func
+	
+	Return: 
+		<SearchMenu props -> currentSearch, setSearch
+	
+		<FilterMenu props -> subjects, categories, filterSubjects, filterCategores, setSubjectFilters, setCategoryFilters
+	
+		<ResourceContainer props -> filterSubjects, filterCategories, currentSearch
+			State:
+				resourceList: [ {resourceObj}...]
+			Functions:
+				filterResources: func
+				searchResources: func
+		
+		
+			resourcesToDisplay:
+				A list of <ResourceDisplay > components, each being propdrilled one of the resources
+					left after filtering and searching the resourceList
+			Return:
+	
+				resourcesToDisplay: [<ResourceDisplay>...] props-> One resource from ResourceList per ResourceDisplay
+
+
+```
