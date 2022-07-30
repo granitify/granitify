@@ -93,3 +93,6 @@ See `./sample-objects.json` for an importable array of sample objects based on t
 
 
 ```
+
+### Page Mockup
+![Page Mockup](FrontendModelUpdated.png)
