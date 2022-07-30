@@ -54,8 +54,12 @@ messageObject / resourceObject {
   category: STRING (describes general category of resource, e.g. tutorial or documentation), optional, defaults to empty string
 }
  ```
-See `./sample-objects.json` for an importable array of sample objects based on the spec
-
+See `./sample-objects.json` for an importable array of sample objects based on the spec.
+To use the sampleObjects in Node.js:
+```
+const sampleObjects = require('../sample-objects.json');
+console.log(sampleObjects[0]);
+```
 
 
 ## React Structure
