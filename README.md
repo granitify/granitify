@@ -83,7 +83,7 @@ See `./sample-objects.json` for an importable array of sample objects based on t
 					left after filtering and searching the resourceList
 			Return:
 	
-				resourcesToDisplay: [<ResourceDisplay resource>] props-> One resource from ResourceList per ResourceDisplay
+				resourcesToDisplay: [<ResourceDisplay>...] props-> One resource from ResourceList per ResourceDisplay
 
 
 ```
