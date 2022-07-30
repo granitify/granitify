@@ -19,7 +19,7 @@ app.use('/build', express.static(path.resolve(__dirname, '../build')));
 
 // Handle API calls via api router
 app.use('/api', api);
-
+git me
 // Serve index.html
 app.get('/', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../public/', 'index.html'));
