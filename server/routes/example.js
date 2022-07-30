@@ -3,12 +3,22 @@ const exampleController = require('../controllers/exampleController');
 
 const router = Router();
 
-
+// https://www.restapitutorial.com/lessons/restquicktips.html
 
 router.use((req, res, next) => {
-  console.log(`server/routes/example.js: received request ${req.method} ${req.url}`);
+  console.log(`server/routes/example.js: received request ${req.method} ${req.url} ${JSON.stringify(req.body)}`);
   next();
 });
+
+router.put('/', (req, res, next) => {
+    console.log(`server/routes/example.js.router.put('/'): received request ${req.method} ${req.url}`);
+    next();
+  },
+  exampleController.createExample,
+  (req, res) => {
+    res.status(200).json(res.locals.newExample);
+  }
+);
 
 router.get('/', (req, res, next) => {
     console.log(`server/routes/example.js.router.get('/'): received request ${req.method} ${req.url}`);
@@ -20,15 +30,7 @@ router.get('/', (req, res, next) => {
   }
 );
 
-router.put('/', (req, res, next) => {
-    console.log(`server/routes/example.js.router.put('/'): received request ${req.method} ${req.url}`);
-    next();
-  },
-  exampleController.createExample,
-  (req, res) => {
-    res.status(200).json(res.locals.newExample);
-  }
-);
+
 
 
 // api router 404 handler
