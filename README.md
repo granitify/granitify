@@ -79,7 +79,7 @@ See `./sample-objects.json` for an importable array of sample objects based on t
 		
 		
 			resourcesToDisplay:
-				A list of <ResourceDisplay > components, eachbeing propdrilled one of the resources
+				A list of <ResourceDisplay > components, each being propdrilled one of the resources
 					left after filtering and searching the resourceList
 			Return:
 	
