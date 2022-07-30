@@ -1,4 +1,10 @@
 # granitify
+## developers 
+- Chase
+- Jackie
+- Rosendo
+- Samson
+- Chris
 
 ## setup
 ```
