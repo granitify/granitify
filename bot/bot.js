@@ -35,8 +35,33 @@ client.on('messageCreate', message => {
 	attachmentArray.push(attachment.url)
 	// console.log(`Attachment ${id}, url: ${attachment.url}`);---Testing
 		}
+
+	let urlRegex = /(https?:\/\/[^\s]+)/g;
+	const urls = new Array;
+	const string = content.split(" ");
+	for (let i = 0; i<string.length; i++){
+		if (string[i].match(urlRegex)){
+			urls.push(string[i])
+		}
+	}
+
 	//data to parse for sending to backend
-	const data = {id, content, author: author.username, createdTimestamp, attachments:attachmentArray}
+	const data = {
+		"ID":id, 
+		"Text":content,
+		"User": author.username,
+		"Date": createdTimestamp,
+		"Attachments": null,
+		"Score": 0,
+		"Embed": null,
+		"Subject": null,
+		"Category": null,
+		"Resource": {
+		  "URL": urls,
+		  "IMAGE": attachmentArray,
+		  "CODE": []
+		}
+	}
 	console.log(data)
 })
 	//Testing--------
