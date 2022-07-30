@@ -1,4 +1,10 @@
 # granitify
+## developers
+- Chase
+- Jackie
+- Rosendo
+- Samson
+- Chris
 
 ## setup
 ```
@@ -23,7 +29,6 @@ In another terminal, start the webpack-dev-server for the front end
 
 
 
-<<<<<<< HEAD
 ```
 messageObject { ID: id#, INT
                  Text: '', STRING
@@ -38,10 +43,9 @@ messageObject { ID: id#, INT
  }
  ```
 
-=======
 ## Message object spec
 ```
-messageObject { 
+messageObject {
   ID: INT (id of Discord message object) required, must be unique
   User: STRING (usernamne of sender of message) required
   Date: INT (time in seconds elapsed since epoch) required
@@ -80,27 +84,29 @@ See `./sample-objects.json` for an importable array of sample objects based on t
 		setSearch: func
 		getCategories: func
 		getSubjects: func
-	
-	Return: 
+
+	Return:
 		<SearchMenu props -> currentSearch, setSearch
-	
+
 		<FilterMenu props -> subjects, categories, filterSubjects, filterCategores, setSubjectFilters, setCategoryFilters
-	
+
 		<ResourceContainer props -> filterSubjects, filterCategories, currentSearch
 			State:
 				resourceList: [ {resourceObj}...]
 			Functions:
 				filterResources: func
 				searchResources: func
-		
-		
+
+
 			resourcesToDisplay:
 				A list of <ResourceDisplay > components, each being propdrilled one of the resources
 					left after filtering and searching the resourceList
 			Return:
-	
+
 				resourcesToDisplay: [<ResourceDisplay>...] props-> One resource from ResourceList per ResourceDisplay
 
 
 ```
->>>>>>> dev
+
+### Page Mockup
+![Page Mockup](FrontendModelUpdated.png)
