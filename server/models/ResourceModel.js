@@ -22,10 +22,10 @@ const resourceSchema = new mongoose.Schema({
   user: { type: String, required: true },
   date: { type: Date, required: true},
   text: { type: String },
-  embeds: { type: Object },
-  attachments: { type: undefined },
+  embeds: [Object],
+  attachments: [Object],
   score: { type: Number },
-  resources: { type: Object, { linkUrls: Object, imageUrls: Object, codeSnippets: Object } },
+  resources: { type: Object, { linkUrls: [String], imageUrls: [String], codeSnippets: [String] } },
   subject: { type: String },
   category: { type: String }
 });
