@@ -1,8 +1,8 @@
 const Router = require('express');
 // const exampleController = require('../controllers/exampleController');
 
-const router = Router();
-
+const router = Router(); 
+const resourceParserController = require('../controllers/resourceParserController')
 // https://www.restapitutorial.com/lessons/restquicktips.html
 
 router.use((req, res, next) => {
@@ -14,10 +14,10 @@ router.put('/', (req, res, next) => {
     console.log(`server/routes/${__filename}.js.router.put('/'): received request ${req.method} ${req.url}`);
     next();
   },
-  // resourceParserController.parsePut,
-  // resourceDatabaseController.create,
+  resourceParserController.parsePut,
+  // resourceController.createResource,
   (req, res) => {
-    res.status(200).json(res.locals.newResource);
+    res.status(200).json(res.locals.createResource);
   }
 );
 

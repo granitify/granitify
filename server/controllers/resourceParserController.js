@@ -1,3 +1,4 @@
+const { resource } = require("../routes/resource");
 
 const resourceParserController = {
 
@@ -6,16 +7,27 @@ const resourceParserController = {
   parsePut: async (req, res, next) => {
     
     try{
-
-        
-      res.locals.newResource = newResource;
+      const msgObject = await req.body[0];
+      /*
+      conditionals here checking:
+        -If object contains all necessarry keys
+        -If objects required keys have values
+        -If keys value types are correct
+      switch()
+      //throw new Error("pass in err here")
+      Only when all conditions pass can we continue
+      */
+      res.locals.createResource = msgObject;
       return next();
     } catch (err) {
         return next({
           message: {err: 'Error parsing put request'},
-          log: 'Error in resourceParserController'
+          log: 'Error in resourceParserController.parsePut',
+          status: 400,
         });
     }
   },
 
 }
+
+module.exports = resourceParserController;
