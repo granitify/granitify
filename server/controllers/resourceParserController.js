@@ -18,18 +18,21 @@ const resourceParserController = {
         -If object contains all/only necessarry keys
         -If objects required keys have values
         -If keys value types are correct
-      switch(msgObject){
-        case (!Object.keys(msgObject).length > 9):
-          throw new Error("More keys in object than needed");
-        case (!msgObject[id] || typeof msgObject[id] !== "number"):
-          throw new Error("Message ID does not exist or is not an integer");
-        case ()
-      }
       //throw new Error("pass in err here")
       Only when all conditions pass (or dont pass depending on how I set it up) can we continue
       */
-      res.locals.createResource = msgObject;
-      return next();
+        switch(msgObject){
+          case (Object.keys(msgObject).length > 9):
+            throw new Error("More keys in msgObject than needed");
+          case (!msgObject[id] || typeof msgObject[id] !== "number"):
+            throw new Error("No ID given or is not an number");
+          case (!msgObject[user] || typeof msgObject[user] !== "string"):
+            throw new Error("No user given or value is not a string");
+          case (!msgObject[date] || typeof msgObject[date] !== "number"):
+            throw new Error("No date given or value is not a number");
+        }
+        res.locals.createResource = msgObject;
+        return next();
       }
       
     } catch (err) {
