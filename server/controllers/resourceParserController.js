@@ -13,9 +13,12 @@ const resourceParserController = {
         -If object contains all necessarry keys
         -If objects required keys have values
         -If keys value types are correct
-      switch()
+      switch(msgObject){
+        case "error case":
+          throw error
+      }
       //throw new Error("pass in err here")
-      Only when all conditions pass can we continue
+      Only when all conditions pass (or dont pass depending on how I set it up) can we continue
       */
       res.locals.createResource = msgObject;
       return next();
