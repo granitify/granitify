@@ -1,20 +1,15 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
+import ResourceDisplay from '../components/ResourceDisplay';
+import SearchMenu from '../components/SearchMenu';
+import sampleJson from '../../sample-objects.json';
 
-const mapStateToProps = (state) => ({});
-
-class MainContainer extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <div>
-        <h2>Examples</h2>
-      </div>
-    );
-  }
+const MainContainer = () => {
+  return (
+    <div>
+      <SearchMenu />
+      <ResourceDisplay resource={sampleJson[0]} />
+    </div>
+  );
 }
 
-export default connect(mapStateToProps, null)(MainContainer);
+export default MainContainer;
