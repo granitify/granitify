@@ -18,43 +18,39 @@ const bull = (
 );
 
 export default function ResourceDisplay(props) {
-  const { id, user, resources } = props.resource;
-  
+  const { id, user, date, resources, subject, category } = props.resource;
+
+  const mapImageUrl = resources.imageUrls.map((item) => {
+    return (<ImageListItem key={item}>
+      <img
+        src={item}
+        srcSet={item}
+        alt={item}
+        loading="lazy"
+      />
+    </ImageListItem>
+  )});
 
   return (
     <Card sx={{ minWidth: 275 }}>
       <CardContent>
-        <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {id}
-        </Typography>
-        <Typography variant="h5" component="div">
-          {`Sent by: ${user}`}
+      <Typography variant="h3" component="div">
+        {subject && `${subject}`}
+      </Typography>
+      <ImageList sx={{ width: 500, height: 250 }} cols={3} rowHeight={164}>
+      {mapImageUrl.length && mapImageUrl}
+      </ImageList>
+      <Typography variant="body2">
+          {resources.codeSnippets && `${resources.codeSnippets}`}
         </Typography>
         <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          <a href={resources.linkUrls}>{resources.linkUrls}</a>
-        </Typography>
-
-        <ImageList sx={{ width: 500, height: 250 }} cols={3} rowHeight={164}>
-        {resources.imageUrls.map((item) => (
-          <ImageListItem key={item}>
-            <img
-              src={item}
-              srcSet={item}
-              alt={item}
-              loading="lazy"
-            />
-          </ImageListItem>
-        ))}
-      </ImageList>
-
-      <Typography variant="body2">
-          {resources.codeSnippets}
+          <a href={resources.linkUrls}>{resources.linkUrls && `${resources.linkUrls}`}</a>
         </Typography>
 
       </CardContent>
-      <CardActions>
-        <Button size="small">Learn More</Button>
-      </CardActions>
+      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+          {`Sent by ${user} on ${date}`}
+        </Typography>
     </Card>
   );
 }
