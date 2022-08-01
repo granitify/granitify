@@ -2,7 +2,8 @@ const Router = require('express');
 // const exampleController = require('../controllers/exampleController');
 
 const router = Router();
-
+const resourceParserController = require('../controllers/resourceParserController');
+const resourceController = require('../controllers/resourceController');
 // https://www.restapitutorial.com/lessons/restquicktips.html
 
 router.use((req, res, next) => {
@@ -14,25 +15,22 @@ router.put('/', (req, res, next) => {
     console.log(`server/routes/${__filename}.js.router.put('/'): received request ${req.method} ${req.url}`);
     next();
   },
-  // resourceParserController.parsePut,
-  // resourceDatabaseController.create,
+  resourceParserController.parsePut,
+  resourceController.createResource,
   (req, res) => {
     res.status(200).json(res.locals.newResource);
   }
 );
 
-// router.get('/', (req, res, next) => {
-//     console.log(`server/routes/${__filename}.js.router.get('/'): received request ${req.method} ${req.url}`);
-//     next();
-//   },
-//   exampleController.getAllExamples,
-//   (req, res) => {
-//     res.status(200).json(res.locals.examples);
-//   }
-// );
-
-
-
+router.get('/', (req, res, next) => {
+    console.log(`server/routes/${__filename}.js.router.get('/'): received request ${req.method} ${req.url}`);
+    next();
+  },
+  resourceController.getAllResources,
+  (req, res) => {
+    res.status(200).json(res.locals.resources);
+  }
+);
 
 // api router 404 handler
 router.use((req, res) => {
