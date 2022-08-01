@@ -6,8 +6,6 @@ const client = new Client ({ intents: [GatewayIntentBits.Guilds, GatewayIntentBi
 // client.commands = new Collection();
 const archiver = require('./archiver');
 
-const TOKEN = process.env.BOT_TOKEN || token;
-
 client.once('ready', () => {
     console.log('Bot starting...');
 });
@@ -47,6 +45,14 @@ client.on('messageCreate', message => {
 			urls.push(string[i])
 		}
 	}
+	
+	// const snippets = new Array;
+	// function snippetSearcher (text){
+	// 	let codeRegex = /```.*??```/;
+	// 	snippets.push(text.match(codeRegex))
+	// 	};
+	
+	// snippetSearcher(content);
 
 	//data to parse for sending to backend
 	const data = {
@@ -60,26 +66,27 @@ client.on('messageCreate', message => {
 		"resource": {
 			"linkUrls": urls,
 			"imageUrls": attachmentArray,
-			"codeSnippets": snippets,
+
+			// "codeSnippets": snippets,
+
 		},
 		"subject": null,
 		"category": null,
 	}
-	archiver.send(message);
+
+	archiver.send(data);
 	console.log(data);
-})
+});
+
 	//Testing--------
 		// console.log(attachments);
 		// console.log(guildId);
 		// console.log(channelId);
 		// console.log (content, id)
 		// console.log(author.username);
-      
-
-        
 
 
-client.login(TOKEN)
+client.login(token)
 
 
 //Message.guildId -- server ID
@@ -88,9 +95,6 @@ client.login(TOKEN)
 //Message.id	--message id (for stretch feature for msg updates)
 //Message.author.username	--username
 //Message.attachments --Collection (# identify how many attachement)
-
-
-
 
 
 
