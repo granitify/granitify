@@ -6,8 +6,9 @@ const client = new Client ({ intents: [GatewayIntentBits.Guilds, GatewayIntentBi
 const archiver = require('./archiver');
 
 // Don't source secrets file if we're using ENV variables for config, as the file won't exist in some environments (e.g. GitHub builds).
+let token;
 if (!process.env.BOT_TOKEN) {
-  const { token } = require('./secrets.json');
+  ({ token } = require('./secrets.json'));
 }
 const TOKEN = process.env.BOT_TOKEN || token;
 
