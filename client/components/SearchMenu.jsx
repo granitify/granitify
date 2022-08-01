@@ -5,6 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
+import TextField from '@mui/material/TextField';
 
 export default function SearchMenu() {
   return (

@@ -1,0 +1,38 @@
+$primary: #1363DF;
+$secondary: #47B5FF;
+$third: #DFF6FF;
+$fourth: #06283D;
+
+body {
+  background-color: $fourth;
+}
+
+.rowC {
+  display: flex;
+  flex-direction: row;
+}
+
+.resources {
+  display: flex;
+  flex-direction: column;
+}
+
+.card {
+  margin: 0.7em;
+}
+
+.filter {
+  display: flex;
+  align-self: flex-start;
+  height: auto;
+  position: sticky;
+  top: 0;
+  margin-top: 10px;
+  margin-right: 50px;
+  margin-left: 5px;
+}
+
+.listImage:hover {
+  cursor: pointer;
+  opacity: 0.75;
+}
