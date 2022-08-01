@@ -47,7 +47,7 @@ export default function ResourceDisplay(props) {
 
   const codeBlocks = resources.codeSnippets.map(e => {
     return (
-      <Paper sx={{ maxWidth: 400 }} elevation={3}>
+      <Paper sx={{ maxWidth: 400, p: 1 }} elevation={3}>
         <code>{e}</code>
       </Paper>
     )
@@ -62,7 +62,7 @@ export default function ResourceDisplay(props) {
   })
 
   return (
-    <Card sx={{m: 2, maxWidth: 720 }}>
+    <Card sx={{m: 2, maxWidth: 720, p: 2 }}>
       <CardContent >
       {/* {subject && <Typography variant="h3" component="div">
         `${subject}`
