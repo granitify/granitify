@@ -62,7 +62,7 @@ export default function ResourceDisplay(props) {
   })
 
   return (
-    <Card sx={{m: 2 }}>
+    <Card sx={{m: 2, maxWidth: 720 }}>
       <CardContent >
       {/* {subject && <Typography variant="h3" component="div">
         `${subject}`
