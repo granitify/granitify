@@ -47,7 +47,7 @@ export default function ResourceDisplay(props) {
 
   const codeBlocks = resources.codeSnippets.map(e => {
     return (
-      <Paper sx={{ maxWidth: 400, p: 1 }} elevation={3}>
+      <Paper sx={{ maxWidth: 640, p: 1, m: 0.5 }} elevation={3}>
         <code>{e}</code>
       </Paper>
     )
@@ -69,7 +69,7 @@ export default function ResourceDisplay(props) {
       </Typography>} */}
       
       {mapImageUrl[0] && <Typography variant="h6" component="div">Images:</Typography>}
-      <ImageList sx={{ maxWidth: 500, maxHeight: 200 }} cols={3} rowHeight={164}>
+      <ImageList sx={{ maxWidth: 640, maxHeight: 200 }} cols={3} rowHeight={164}>
       {mapImageUrl[0] && mapImageUrl}
       </ImageList>
 
