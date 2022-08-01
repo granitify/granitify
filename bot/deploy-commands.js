@@ -1,6 +1,18 @@
 const { SlashCommandBuilder, Routes } = require('discord.js');
 const { REST } =require('@discordjs/rest');
-const {applicationId, guildId, token} = require('./secrets.json');
+
+let applicationId, token, guildId;
+
+if (!process.env.BOT_TOKEN || !process.env.BOT_GUILDID || !process.env.BOT_CLIENT) {
+    applicationId = require('./secrets.json').applicationId;
+    guildId = require('./secrets.json').guildId;
+    token = require('./secrets.json').token;
+} else {
+    applicationId = process.env.BOT_CLIENT;
+    token = process.env.BOT_TOKEN;
+    guildId = process.env.BOT_GUILDID;
+}
+
 
 const commands = [	
     new SlashCommandBuilder().setName('ping').setDescription('Replies with pong!'),

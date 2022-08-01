@@ -1,13 +1,16 @@
 // const fs = require('node:fs');
 // const path = require('node:path');
 const { Client, GatewayIntentBits } = require('discord.js');
-const { token } = require('./secrets.json');
 const client = new Client ({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.DirectMessages]});
 // client.commands = new Collection();
 const archiver = require('./archiver');
 
-const TOKEN = process.env.BOT_TOKEN || token;
+let token;
+if (!process.env.BOT_TOKEN) {
+  token = require('./secrets.json').token;
+}
 
+const TOKEN = process.env.BOT_TOKEN || token;
 
 client.once('ready', () => {
     console.log('Bot starting...');
