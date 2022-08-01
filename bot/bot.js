@@ -24,7 +24,6 @@ client.on('interactionCreate', async interaction => {
 	}
 });
 
-
 //bot read message and collect info for sending to backend MongoDB
 client.on('messageCreate', message => {
 	const {guildId, channelId, content, id, author, attachments, createdTimestamp} = message;
@@ -45,7 +44,14 @@ client.on('messageCreate', message => {
 			urls.push(string[i])
 		}
 	}
-
+	
+	// const snippets = new Array;
+	// function snippetSearcher (text){
+	// 	let codeRegex = /```.*??```/;
+	// 	snippets.push(text.match(codeRegex))
+	// 	};
+	
+	// snippetSearcher(content);
 	//data to parse for sending to backend
 	const data = {
 		"id":id, 
@@ -58,23 +64,21 @@ client.on('messageCreate', message => {
 		"resource": {
 			"linkUrls": urls,
 			"imageUrls": attachmentArray,
-			"codeSnippets": snippets,
+			// "codeSnippets": snippets,
 		},
 		"subject": null,
 		"category": null,
 	}
-	archiver.send(message);
+	archiver.send(data);
 	console.log(data);
-})
+});
 	//Testing--------
 		// console.log(attachments);
 		// console.log(guildId);
 		// console.log(channelId);
 		// console.log (content, id)
 		// console.log(author.username);
-      
-
-        
+            
 
 
 client.login(token)
