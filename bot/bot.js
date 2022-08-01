@@ -1,5 +1,6 @@
 // const fs = require('node:fs');
 // const path = require('node:path');
+const codeSearch = require('./codeSearch');
 const { Client, GatewayIntentBits } = require('discord.js');
 const client = new Client ({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.DirectMessages]});
 // client.commands = new Collection();
@@ -33,6 +34,7 @@ client.on('interactionCreate', async interaction => {
 
 //bot read message and collect info for sending to backend MongoDB
 client.on('messageCreate', message => {
+	console.log(message.content);
 	const {guildId, channelId, content, id, author, attachments, createdTimestamp} = message;
 	console.log("message received");
 	let attachment;
@@ -52,19 +54,20 @@ client.on('messageCreate', message => {
 		}
 	}
 	
-	const snippets = new Array;
-	function snippetSearcher (text){
-		let codeRegex = /((```)?)([^`]+)\1(?=[^`]|$)/;
-    const string = text.split(" ");
-	for (let i = 0; i<string.length; i++){
-		if (string[i].match(codeRegex)){
-			snippets.push(string[i])
-		}
-		}
-    return snippets;
-  }
+// 	const snippets = new Array;
+// 	function snippetSearcher (text){
+// 		let codeRegex = /(?<=[^`]|^)(`(?:``)?)([^`]+)\1(?=[^`]|$)/;
+//     const string = text.split(" ");
+// 	for (let i = 0; i<string.length; i++){
+// 		if (string[i].match(codeRegex)){
+// 			snippets.push(string[i])
+// 		}
+// 		}
+//     return snippets;
+//   }
 	
-	snippetSearcher(content);
+	// snippetSearcher(content);
+	const code = codeSearch(content);
 
 	//data to parse for sending to backend
 	const data = {
@@ -78,7 +81,7 @@ client.on('messageCreate', message => {
 		"resources": {
 			"linkUrls": urls,
 			"imageUrls": attachmentArray,
-			"codeSnippets": snippets,
+			"codeSnippets": code[0].concat(code[1]),
 
 		},
 		"subject": null,
@@ -86,7 +89,8 @@ client.on('messageCreate', message => {
 	}
 
 	archiver.send(data);
-	console.log(data);
+	
+	// console.log(snippetSearcher("```Test 20 https://getcssscan.com/css-box-shadow-examples```"));
 });
 
 	//Testing--------
