@@ -1,11 +1,14 @@
 // const fs = require('node:fs');
 // const path = require('node:path');
 const { Client, GatewayIntentBits } = require('discord.js');
-const { token } = require('./secrets.json');
 const client = new Client ({ intents: [GatewayIntentBits.Guilds, GatewayIntentBits.GuildMessages, GatewayIntentBits.MessageContent, GatewayIntentBits.DirectMessages]});
 // client.commands = new Collection();
 const archiver = require('./archiver');
 
+// Don't source secrets file if we're using ENV variables for config, as the file won't exist in some environments (e.g. GitHub builds).
+if (!process.env.BOT_TOKEN) {
+  const { token } = require('./secrets.json');
+}
 const TOKEN = process.env.BOT_TOKEN || token;
 
 client.once('ready', () => {
