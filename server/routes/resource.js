@@ -22,18 +22,15 @@ router.put('/', (req, res, next) => {
   }
 );
 
-// router.get('/', (req, res, next) => {
-//     console.log(`server/routes/${__filename}.js.router.get('/'): received request ${req.method} ${req.url}`);
-//     next();
-//   },
-//   exampleController.getAllExamples,
-//   (req, res) => {
-//     res.status(200).json(res.locals.examples);
-//   }
-// );
-
-
-
+router.get('/', (req, res, next) => {
+    console.log(`server/routes/${__filename}.js.router.get('/'): received request ${req.method} ${req.url}`);
+    next();
+  },
+  resourceController.getAllResources,
+  (req, res) => {
+    res.status(200).json(res.locals.resources);
+  }
+);
 
 // api router 404 handler
 router.use((req, res) => {
