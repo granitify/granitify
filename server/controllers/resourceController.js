@@ -23,6 +23,9 @@ resourceController.getAllResources = async (req, res, next) => {
 
 // Example Mongoose create
 resourceController.createResource = async (req, res, next) => {
+  console.log(`DB: resourceController.createResource called`)
+  console.log(`DB: res.locals: ${JSON.stringify(res.locals)}`)
+
   const required = ['id', 'user', 'date'];
   const { id, user, date, text, embeds, attachments, score, resources, subject, category } = res.locals.createResource;
 

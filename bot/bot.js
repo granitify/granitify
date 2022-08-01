@@ -68,14 +68,14 @@ client.on('messageCreate', message => {
 
 	//data to parse for sending to backend
 	const data = {
-		"id":id, 
+		"id": Number(id), 
 		"user": author.username,
 		"date": createdTimestamp,
 		"text":content,
-		"embed": null,
+		"embeds": null,
 		"attachments": null,
 		"score": 0,
-		"resource": {
+		"resources": {
 			"linkUrls": urls,
 			"imageUrls": attachmentArray,
 			"codeSnippets": snippets,
