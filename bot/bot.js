@@ -6,6 +6,9 @@ const client = new Client ({ intents: [GatewayIntentBits.Guilds, GatewayIntentBi
 // client.commands = new Collection();
 const archiver = require('./archiver');
 
+const TOKEN = process.env.BOT_TOKEN || token;
+
+
 client.once('ready', () => {
     console.log('Bot starting...');
 });
@@ -86,7 +89,7 @@ client.on('messageCreate', message => {
 		// console.log(author.username);
 
 
-client.login(token)
+client.login(TOKEN)
 
 
 //Message.guildId -- server ID
