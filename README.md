@@ -1,5 +1,5 @@
 # granitify
-## developers 
+## developers
 - Chase
 - Jackie
 - Rosendo
@@ -29,6 +29,20 @@ In another terminal, start the webpack-dev-server for the front end
 
 
 
+```
+messageObject { ID: id#, INT
+                 Text: '', STRING
+                 User: "author", STRING
+                 Date: timestamp, DATE
+                 Attachments: undefined, ???
+                 Score: reactions + pinned etc., INT
+                 Embed: embed, ???
+                 Subject: undefined(react, mongodb etc..), STRING
+                 Category: undefined(tutorial, docs, lecture) STRING
+                 Resource: {URL: [''] ,  IMAGE: ''   CODE: ''}
+ }
+ ```
+
 ## Message object spec
 ```
 messageObject / resourceObject {
@@ -39,7 +53,7 @@ messageObject / resourceObject {
   text: STRING (full text of body of message), optional, defaults to empty string
   embeds: ARRAY (array of embedObjects), optional, defaults to empty array
   attachments: ARRAY (array of attachmentObjects), optional, defaults to an empty array
-  
+
   // Determined by parsing of message
   score: INT (calculated score of resource), required, defaults to 0,
   resources: OBJECT (keyed object containing parsed out resources)
@@ -79,25 +93,25 @@ console.log(sampleObjects[0]);
 		setSearch: func
 		getCategories: func
 		getSubjects: func
-	
-	Return: 
+
+	Return:
 		<SearchMenu props -> currentSearch, setSearch
-	
+
 		<FilterMenu props -> subjects, categories, filterSubjects, filterCategores, setSubjectFilters, setCategoryFilters
-	
+
 		<ResourceContainer props -> filterSubjects, filterCategories, currentSearch
 			State:
 				resourceList: [ {resourceObj}...]
 			Functions:
 				filterResources: func
 				searchResources: func
-		
-		
+
+
 			resourcesToDisplay:
 				A list of <ResourceDisplay > components, each being propdrilled one of the resources
 					left after filtering and searching the resourceList
 			Return:
-	
+
 				resourcesToDisplay: [<ResourceDisplay>...] props-> One resource from ResourceList per ResourceDisplay
 
 
