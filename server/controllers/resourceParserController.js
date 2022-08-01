@@ -1,18 +1,15 @@
-const { resource } = require("../routes/resource");
 
 const resourceParserController = {
-
-  //parse put request http://localhost:3000/api/resource
 
   parsePut: async (req, res, next) => {
     
     try{
       
-      const msgObject = await req.body[0];
+      const msgObject = await req.body;
       const keyArr = ["id", "user", "date", "text", "embeds", "attachments", "score", "resources", "subject", "category"];
-      const hasKeys = await keyArr.every(key => msgObject.hasOwnProperty(key));
+      const hasKeys = keyArr.every(key => msgObject.hasOwnProperty(key));
       while(hasKeys === true){
-        //const msgObject = await req.body[0];
+        //const msgObject = await req.body;
       /*
       conditionals here checking:
         -If object contains all/only necessarry keys
