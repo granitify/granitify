@@ -73,14 +73,14 @@ export default function ResourceDisplay(props) {
       {mapImageUrl[0] && mapImageUrl}
       </ImageList>
 
-      {codeBlocks[0] && <Typography variant="h6" component="div">Code:</Typography>}
+      {codeBlocks[0] && <Typography sx={{ mt:1.5 }} variant="h6" component="div">Code:</Typography>}
       {codeBlocks}
 
-      {links[0] && <Typography variant="h6" component="div">Links:</Typography>}
+      {links[0] && <Typography sx={{ mt:1.5 }}  variant="h6" component="div">Links:</Typography>}
       {links}
 
       </CardContent>
-      <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
+      <Typography sx={{ fontSize: 14, mt: 1.5 }} color="text.secondary" gutterBottom>
           {`Sent by ${user} on ${new Date(date).toLocaleString()}`}
         </Typography>
     </Card>
