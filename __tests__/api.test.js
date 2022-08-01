@@ -5,9 +5,9 @@ const assert = require('assert');
 
 const sampleObjects = require('../sample-objects.json');
 // Set id of sample object to epoch time in order to (probably) ensure uniqueness
-sampleObjects[0].id = Number(new Date().getTime())
+sampleObjects[0].id = Number(new Date().getTime());
 
-const server = 'http://localhost:3000';
+const server = 'http://localhost:33210';
 
 describe('API', () => {
   describe('/', () => {

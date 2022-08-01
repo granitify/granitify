@@ -25,7 +25,7 @@ const resourceSchema = new mongoose.Schema({
   embeds: [Object],
   attachments: [Object],
   score: { type: Number },
-  resources: { type: Object, { linkUrls: [String], imageUrls: [String], codeSnippets: [String] } },
+  resources: { linkUrls: [String], imageUrls: [String], codeSnippets: [String] },
   subject: { type: String },
   category: { type: String }
 });
