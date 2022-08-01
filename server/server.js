@@ -22,7 +22,7 @@ app.use('/api', api);
 
 // Serve index.html
 app.get('/', (req, res) => {
-  res.sendFile(path.resolve(__dirname, '../public/', 'index.html'));
+  res.status(200).sendFile(path.resolve(__dirname, '../public/', 'index.html'));
 });
 
 // Default 404 handler
@@ -47,7 +47,6 @@ app.use((err, req, res, next) => {
   res.status(errObj.status).send(errObj.message);
 });
 
-// Fire it up
-app.listen(PORT, () => {
+module.exports = app.listen(PORT, () => {
   console.log(`Express Node server listening on ${PORT}`);
 });
