@@ -1,7 +1,9 @@
-const Example = require('../models/exampleModel');
+const Example = require('../models/ExampleModel');
 const { createErr } = require('../utils/utils');
 
 const exampleController = {};
+
+
 
 // Example Mongoose find
 exampleController.getAllExamples = async (req, res, next) => {
