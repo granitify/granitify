@@ -54,17 +54,17 @@ client.on('messageCreate', message => {
 		}
 	}
 	
-	const snippets = new Array;
-	function snippetSearcher (text){
-		let codeRegex = /(?<=[^`]|^)(`(?:``)?)([^`]+)\1(?=[^`]|$)/;
-    const string = text.split(" ");
-	for (let i = 0; i<string.length; i++){
-		if (string[i].match(codeRegex)){
-			snippets.push(string[i])
-		}
-		}
-    return snippets;
-  }
+// 	const snippets = new Array;
+// 	function snippetSearcher (text){
+// 		let codeRegex = /(?<=[^`]|^)(`(?:``)?)([^`]+)\1(?=[^`]|$)/;
+//     const string = text.split(" ");
+// 	for (let i = 0; i<string.length; i++){
+// 		if (string[i].match(codeRegex)){
+// 			snippets.push(string[i])
+// 		}
+// 		}
+//     return snippets;
+//   }
 	
 	// snippetSearcher(content);
 	const code = codeSearch(content);
@@ -89,7 +89,8 @@ client.on('messageCreate', message => {
 	}
 
 	archiver.send(data);
-	///console.log(data);
+	
+	// console.log(snippetSearcher("```Test 20 https://getcssscan.com/css-box-shadow-examples```"));
 });
 
 	//Testing--------
