@@ -24,7 +24,7 @@ resourceController.getAllResources = async (req, res, next) => {
 // Example Mongoose create
 resourceController.createResource = async (req, res, next) => {
   const required = ['id', 'user', 'date'];
-  const { id, user, date, text, embeds, attachments, score, resources, subject, category } = req.body;
+  const { id, user, date, text, embeds, attachments, score, resources, subject, category } = res.locals.createResource;
 
   if (required.some((key) => req.body[key] === undefined)) {
     return next(
@@ -35,7 +35,6 @@ resourceController.createResource = async (req, res, next) => {
       })
     );
   }
-
   if (
     typeof id !== 'number' ||
     typeof user !== 'string' ||
@@ -45,24 +44,63 @@ resourceController.createResource = async (req, res, next) => {
       createErr({
         method: 'createResource',
         type: 'data validation error',
-        err: 'request body did contained invalid data',
+        err: 'request body contained invalid data',
       })
     );
   }
-
   try {
     const dbRes = await Resource.create({ id, user, date, text, embeds, attachments, score, resources, subject, category });
     res.locals.newResource = dbRes;
   } catch (err) {
     return next(
       createErr({
-        method: 'createExample',
+        method: 'db create',
         type: 'db insert error',
         err,
       })
     );
   }
+  return next();
+};
 
+resourceController.deleteResource = async (req, res, next) => {
+  const required = ['id', 'user', 'date'];
+  const { id, user, date, text, embeds, attachments, score, resources, subject, category } = res.locals.deleteResource;
+
+  if (required.some((key) => req.body[key] === undefined)) {
+    return next(
+      createErr({
+        method: 'deleteResource',
+        type: 'data validation error',
+        err: 'request body did not include all required fields',
+      })
+    );
+  }
+  if (
+    typeof id !== 'number' ||
+    typeof user !== 'string' ||
+    typeof date !== 'number'
+  ) {
+    return next(
+      createErr({
+        method: 'deleteResource',
+        type: 'data validation error',
+        err: 'request body contained invalid data',
+      })
+    );
+  }
+  try {
+    const dbRes = await Resource.deleteOne({ id: id, user: user, date: date, text: text, embeds: embeds, attachments: attachments, score: score, resources: resources, subject: subject, category: category });
+    res.locals.deletedEntry = dbRes;
+  } catch (err) {
+    return next(
+      createErr({
+        method: 'db deleteOne',
+        type: 'db deleteOne error',
+        err,
+      })
+    );
+  }
   return next();
 };
 
