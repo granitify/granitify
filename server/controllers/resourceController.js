@@ -64,8 +64,8 @@ resourceController.createResource = async (req, res, next) => {
 };
 
 resourceController.deleteResource = async (req, res, next) => {
-  const required = ['id', 'user', 'date'];
-  const { id, user, date, text, embeds, attachments, score, resources, subject, category } = res.locals.deleteResource;
+  const required = ['id'];
+  const { id } = res.locals.deleteResource;
 
   if (required.some((key) => req.body[key] === undefined)) {
     return next(
@@ -77,9 +77,7 @@ resourceController.deleteResource = async (req, res, next) => {
     );
   }
   if (
-    typeof id !== 'number' ||
-    typeof user !== 'string' ||
-    typeof date !== 'number'
+    typeof id !== 'number'
   ) {
     return next(
       createErr({
@@ -90,13 +88,57 @@ resourceController.deleteResource = async (req, res, next) => {
     );
   }
   try {
-    const dbRes = await Resource.deleteOne({ id: id, user: user, date: date, text: text, embeds: embeds, attachments: attachments, score: score, resources: resources, subject: subject, category: category });
+    // const dbRes = await Resource.deleteOne({ id: id });
+    const dbRes = await Resource.findOneAndDelete({ id: id });
+    console.log('***LOGGING dbRes, should show DELETED object: ', dbRes);
     res.locals.deletedEntry = dbRes;
   } catch (err) {
     return next(
       createErr({
-        method: 'db deleteOne',
-        type: 'db deleteOne error',
+        method: 'db findOneAndDelete',
+        type: 'db findOneAndDelete error',
+        err,
+      })
+    );
+  }
+  return next();
+};
+
+resourceController.updateResource = async (req, res, next) => {
+  const required = ['id'];
+  const { id, user, date, text, embeds, attachments, score, resources, subject, category } = res.locals.oldResource;
+  const { idUpdated, userUpdated, dateUpdated, textUpdated, embedsUpdated, attachmentsUpdated, scoreUpdated, resourcesUpdated, subjectUpdated, categoryUpdated } = res.locals.newResource;
+
+  if (required.some((key) => req.body[key] === undefined)) {
+    return next(
+      createErr({
+        method: 'updateResource',
+        type: 'data validation error',
+        err: 'request body did not include all required fields',
+      })
+    );
+  }
+  if (
+    typeof id !== 'number'
+  ) {
+    return next(
+      createErr({
+        method: 'updateResource',
+        type: 'data validation error',
+        err: 'request body contained invalid data',
+      })
+    );
+  }
+  try {
+    // const dbRes = await Resource.create({ id, user, date, text, embeds, attachments, score, resources, subject, category });
+    const dbRes = await Resource.findOneAndUpdate({ id: id }, { text: textUpdated, embeds: embedsUpdated, attachments: attachmentsUpdated, score: scoreUpdated, resources: resourcesUpdated, subject: subjectUpdated, category: categoryUpdated }, {new: true});
+    console.log('***LOGGING dbRes, should show UPDATED object: ', dbRes);
+    res.locals.updatedEntry = dbRes;
+  } catch (err) {
+    return next(
+      createErr({
+        method: 'db findOneAndUpdate',
+        type: 'db update error',
         err,
       })
     );
