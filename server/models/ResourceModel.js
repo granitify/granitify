@@ -4,7 +4,7 @@ const fs = require('fs');
 
 let CFG_MONGO_URI;
 
-if (!process.env.MONGO_URI) {
+if (process.env.MONGO_URI === undefined) {
   CFG_MONGO_URI = JSON.parse(fs.readFileSync(path.resolve(__dirname, '../../secrets.json'))).MONGO_URI;
 }
 const MONGO_URI = process.env.MONGO_URI || CFG_MONGO_URI;
