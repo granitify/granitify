@@ -23,7 +23,8 @@
   },
   "jest": {
     "globalSetup": "./jest-setup.js",
-    "globalTeardown": "./jest-teardown.js"
+    "globalTeardown": "./jest-teardown.js",
+    "reporters": ["default", "github-actions"]
   },
   "repository": {
     "type": "git",
