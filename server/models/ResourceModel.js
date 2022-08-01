@@ -25,7 +25,7 @@ mongoose.connect(MONGO_URI, {
 const Schema = mongoose.Schema;
 
 const resourceSchema = new mongoose.Schema({
-  id: { type: Number, required: true },
+  id: { type: Number, required: true, unique: true },
   user: { type: String, required: true },
   date: { type: Date, required: true},
   text: { type: String },
