@@ -2,7 +2,7 @@ const Router = require('express');
 // const exampleController = require('../controllers/exampleController');
 
 const router = Router();
-
+const resourceParserController = require('../controllers/resourceParserController')
 // https://www.restapitutorial.com/lessons/restquicktips.html
 
 router.use((req, res, next) => {
