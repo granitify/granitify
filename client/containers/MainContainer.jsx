@@ -28,9 +28,9 @@ const MainContainer = () => {
   //   arr.push(sampleJson[i])
   // }
   resources.forEach((resource) => {
-    resourceArray.push(<ResourceDisplay resource={resource} key={`resource-${resource.id}`}/>)
-    // resourceArray.push(<div className='card'><ResourceDisplay resource={resource} key={`resource-${resource.id}`}/></div>)
+    if (resource.resources.linkUrls.length || resource.resources.imageUrls.length || resource.resources.codeSnippets.length ) resourceArray.push(<ResourceDisplay resource={resource} key={`resource-${resource.id}`}/>)
   })
+  resourceArray.reverse();
 
   return (
     <div>
