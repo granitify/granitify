@@ -49,13 +49,19 @@ client.on('messageCreate', message => {
 		}
 	}
 	
-	// const snippets = new Array;
-	// function snippetSearcher (text){
-	// 	let codeRegex = /```.*??```/;
-	// 	snippets.push(text.match(codeRegex))
-	// 	};
+	const snippets = new Array;
+	function snippetSearcher (text){
+		let codeRegex = /((```)?)([^`]+)\1(?=[^`]|$)/;
+    const string = text.split(" ");
+	for (let i = 0; i<string.length; i++){
+		if (string[i].match(codeRegex)){
+			snippets.push(string[i])
+		}
+		}
+    return snippets;
+  }
 	
-	// snippetSearcher(content);
+	snippetSearcher(content);
 
 	//data to parse for sending to backend
 	const data = {
@@ -69,8 +75,7 @@ client.on('messageCreate', message => {
 		"resource": {
 			"linkUrls": urls,
 			"imageUrls": attachmentArray,
-
-			// "codeSnippets": snippets,
+			"codeSnippets": snippets,
 
 		},
 		"subject": null,
