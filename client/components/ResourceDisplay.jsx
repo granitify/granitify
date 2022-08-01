@@ -44,7 +44,7 @@ export default function ResourceDisplay(props) {
   )});
 
   return (
-    <Card sx={{ minWidth: 1000 }}>
+    <Card sx={{m: 2 }}>
       <CardContent >
       <Typography variant="h3" component="div">
         {subject && `${subject}`}
