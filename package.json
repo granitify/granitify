@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest",
+    "test": "jest --detectOpenHandles",
+    "testw": "jest --watch",
     "start": "node server/server.js",
     "bot": "node bot/bot.js",
     "build": "NODE_ENV=production webpack",
@@ -20,16 +21,20 @@
       "__tests__"
     ]
   },
+  "jest": {
+    "globalSetup": "./jest-setup.js",
+    "globalTeardown": "./jest-teardown.js"
+  },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/seadubs/nerm-template.git"
+    "url": "git+https://github.com/granitify/granitify.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/seadubs/nerm-template/issues"
+    "url": "https://github.com/granitify/granitify/issues"
   },
-  "homepage": "https://github.com/seadubs/nerm-template#readme",
+  "homepage": "https://github.com/granitify/granitify#readme",
   "dependencies": {
     "@discordjs/rest": "^1.0.1",
     "@emotion/react": "^11.9.3",
