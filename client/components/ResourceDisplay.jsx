@@ -7,6 +7,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 import ImageList from '@mui/material/ImageList';
 import ImageListItem from '@mui/material/ImageListItem';
+import { Paper } from '@mui/material';
 import '../../styles/app.scss'
 
 const bull = (
@@ -43,25 +44,44 @@ export default function ResourceDisplay(props) {
     </ImageListItem>
   )});
 
+
+  const codeBlocks = resources.codeSnippets.map(e => {
+    return (
+      <Paper sx={{ maxWidth: 400 }} elevation={3}>
+        <code>{e}</code>
+      </Paper>
+    )
+  })
+
+  const links = resources.linkUrls.map(e => {
+    return (
+      <Typography sx={{ mb: 1.5 }} color="text.secondary">
+        <a onClick={handleClickLink} href={resources.linkUrls}>{resources.linkUrls && `${resources.linkUrls}`}</a>
+      </Typography>
+    )
+  })
+
   return (
     <Card sx={{m: 2 }}>
       <CardContent >
-      <Typography variant="h3" component="div">
-        {subject && `${subject}`}
-      </Typography>
-      <ImageList sx={{ width: 500, height: 200 }} cols={3} rowHeight={164}>
+      {/* {subject && <Typography variant="h3" component="div">
+        `${subject}`
+      </Typography>} */}
+      
+      {mapImageUrl[0] && <Typography variant="h6" component="div">Images:</Typography>}
+      <ImageList sx={{ maxWidth: 500, maxHeight: 200 }} cols={3} rowHeight={164}>
       {mapImageUrl[0] && mapImageUrl}
       </ImageList>
 
-      <code>{resources.codeSnippets && `${resources.codeSnippets}`}</code>
+      {codeBlocks[0] && <Typography variant="h6" component="div">Code:</Typography>}
+      {codeBlocks}
 
-        <Typography sx={{ mb: 1.5 }} color="text.secondary">
-          <a onClick={handleClickLink} href={resources.linkUrls}>{resources.linkUrls && `${resources.linkUrls}`}</a>
-        </Typography>
+      {links[0] && <Typography variant="h6" component="div">Links:</Typography>}
+      {links}
 
       </CardContent>
       <Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom>
-          {`Sent by ${user} on ${date}`}
+          {`Sent by ${user} on ${new Date(date).toLocaleString()}`}
         </Typography>
     </Card>
   );

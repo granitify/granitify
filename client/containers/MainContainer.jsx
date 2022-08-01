@@ -29,8 +29,8 @@ const MainContainer = () => {
   // }
   resources.forEach((resource) => {
     resourceArray.push(<ResourceDisplay resource={resource} key={`resource-${resource.id}`}/>)
-    // resourceArray.push(<div className='card'><ResourceDisplay resource={resource} key={`resource-${resource.id}`}/></div>)
   })
+  resourceArray.reverse();
 
   return (
     <div>
