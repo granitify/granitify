@@ -28,7 +28,7 @@ const MainContainer = () => {
   //   arr.push(sampleJson[i])
   // }
   resources.forEach((resource) => {
-    resourceArray.push(<ResourceDisplay resource={resource} key={`resource-${resource.id}`}/>)
+    if (resource.resources.linkUrls.length || resource.resources.imageUrls.length || resource.resources.codeSnippets.length ) resourceArray.push(<ResourceDisplay resource={resource} key={`resource-${resource.id}`}/>)
   })
   resourceArray.reverse();
 
